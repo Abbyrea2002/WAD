@@ -1,9 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<h1> home page</h1>
+<h1> Gallery </h1>
+<script src="ajax.js" type="text/javascript"></script>
+<script src="gallery.js" type="text/javascript"></script>
+<script language="JavaScript">
+preloading("images/big-girl.gif");
+preloading("images/big-thinking.gif");
+preloading("images/big-sea.gif");
+preloading("images/big-sand.gif");
+</script>
+<script>
+    function localFilename(url)    // removing path
+    {
+      var x = url.lastIndexOf("/");
+      url = url.slice(x + 1);
+      return url;		
+    }
+    
+    // images are loaded asynchronously with no delay
+    
+    function preloading(url)
+    {
+      var xhr=createXHR();   
+      xhr.onreadystatechange=function()
+      { 
+        if(xhr.readyState == 4)
+        {
+          var content = xhr.responseText;
+          var i = new Image();
+          i.src = content;
+        } 
+      }; 
+    
+      xhr.open("GET", url , true);
+      xhr.send(null); 
+    } 
+    
+    function enlarge(element)
+    {
+      var name = element.src;
+        
+      name = localFilename(name);
+      name = name.slice(6);   // remove the "thumb-" part
+      name = "images/big-" + name;  // restore path and add the new "big-" prefix
+            
+      // building a string to display the image
+        
+      var str = "<img src='" + name + "' >";
+      document.getElementById("bigview").innerHTML = str;
+    }
+    </script>
+<style>
+    h1{
+        text-align: center;
+
+    }
+    #views
+{
+  position:relative;
+  height:932px;
+  min-heigth:932px;
+  margin:16px;
+  overflow:auto;
+}
+
+#leftview
+{
+  position:absolute;
+  top:0px;
+}
+
+#bigview
+{
+  position:absolute;
+  top:0px;
+  left: 300px;	
+  background-color:while;
+  width:400px;
+  height:400px;
+  min-height:400px;	
+}
+</style>
 </head>
 <body>
-
+    <div id="views">
+        <div id="leftview">
+          <p><img src="images/thumb-girl.gif" width="199" height="152" onmouseover="enlarge(this)"> </p>
+          <p><img src="images/thumb-thinking.gif" width="198" height="173" onmouseover="enlarge(this)"></p>
+          <p><img src="images/thumb-sand.gif" width="200" height="196" onmouseover="enlarge(this)"></p>
+          <p><img src="images/thumb-sea.gif" width="200" height="348" onmouseover="enlarge(this)"></p>
+          </div>
+        <div id="bigview" onclick="alert(this);">
+        </div>
+        </div>
 </body>
 </html>

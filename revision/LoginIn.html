@@ -3,57 +3,83 @@
     <head>
         <meta charset="utf-8">
         <meta  name="viewport" content="width=device-width">
+        <script>
+            function myFunction(){
+            var uName = document.forms["myForm"]["uName"].value;
+            var pWord = document.forms["myForm"]["pWord"].value;
+            if(uName=="log" && pWord=="1234"){
+                window.location.href="homepage.html";
+            }
+            else{
+                alert("invalid")
+            }
+        }
+        </script>
         <style>
-          
+            body{
+                background-color: silver;
+            }
             .column{
                 float: left;
                 width: 200px;
                 border: 3xp solid;
                 border-style: line;
                 border-color: black;
+                align-content: center;
             }
+            form{
+                align-content: center;
+                text-align: center;
+                width: 500px;
+                background-color: white;
+                border: 3px solid;
+            }
+            h1{
+                text-align: center;
+            }
+           .row{
+                content: "";
+                clear:both;
+                display: table;
+                align-content: center;
+
+            }
+
 
         </style>
     </head>
     <body>
 
         <h1> Login In </h1>
-
-        <div class="container">
-            <div class="row">
-                <div class="column">
-                    <div class="container">
-                        <label> Username: </label>
-                        <p>  </p>
-                    </div>
-                    <div class="container">
-                        <label> Password: </label>
-                    </div>
-            </div>
-                <div class="column">
-                    <div class="container">
-                        <input name="uName">
-                    </div>
-                    <div class="container">
-                        <input name="pWord">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="row">
+        <form name="myForm" method="post"> 
+        <div class="row">
+            <div class="column">
               <div class="container">
-                <button type="button"> Login In </button>
+                <lable name="uName"> UserName:</lable>
               </div>
-                
-              
+              <br>
+              <div class="container">
+                <lable name="Pword"> Password:</lable>
+              </div>
+            </div>
+            <div class="column">
+             <div class="container">
+                <input type="text" name="uName" class="inputText">
+             </div>
+             <br>
+             <div class="container">
+                <input type="text" name="pWord" class="inputText"> 
+             </div>
             </div>
         </div>
-        <script>
-            window.location.href = "homepage.html"
-        </script>
+        <div class="row">
+            <div class="column">
+             <div class="container">
+                <button  type="button"   onclick="myFunction()"> Login </button>
+             </div>
+            </div>
+        </div>
+    </form>
         
   
     </body>
