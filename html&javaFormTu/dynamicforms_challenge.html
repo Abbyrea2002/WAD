@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Dynamic Forms Challenge</title>
+        <link rel="stylesheet" href="styles_finished.css">
+
+        <!-- PUT YOUR CODE HERE -->
+        <script>
+
+            window.getEventListener("load", e =>{
+                document.getElementById("clearable").addEventListener("keydon", evt => {
+                    if(evt.shiftkey && evt.code == "Escape"){
+                        console.log("Shift-ESC pressed");
+                        evt.srcElement.value = ("");
+                    }
+                });
+            })
+            function getDate(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1;
+                var yy = today.getFullYear();
+
+                if (dd<10){
+                    dd = '0'+ dd
+                }
+                if(mm<10){
+                    mm = '0' + mm
+                }
+                today = dd + '/' + mm + '/' + yyyy;
+                console.log(today);
+                document.getElementById("todaydate").value = today;
+            }
+
+            window.onload = function() { 
+                getDate();
+            };
+
+            function addNewItem(evt) {
+                let dateval = document.getElementById("todaydate").value;
+
+                let stringval = document.getElementById("clearable").value;
+
+                let newitem = document.createElement("li");
+                let newitemtext = document.createTextNode("[" + dateval + "]" + stringval);
+                newitem.appendChild(newitemtext);
+
+                document.getElementById("listcontent").appendChild(newitem);
+                evt.preventDefault();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Dynamic Forms Challenge</h1>
+        <form action="" autocomplete="off" id="theform">
+            <fieldset>
+                <legend>Clearable text field with Shift-ESC:</legend>
+                <div>
+                    <label for="clearable">Item name:
+                        <input type="text" name="clearable" id="clearable">
+                    </label>
+                </div>
+                <div>
+                    <label for="todaydate">Date:
+                        <input type="date" name="todaydate" id="todaydate">
+                    </label>
+                </div>
+                <div>
+                    <button id="additem">Add Item</button>
+                </div>
+                <div>
+                    <ul id="listcontent"></ul>
+                </div>
+            </fieldset>
+
+            <button id="btnsubmit">Submit</button>
+            <button id="btnreset">Reset</button>
+        </form>
+    </body>
+</html>

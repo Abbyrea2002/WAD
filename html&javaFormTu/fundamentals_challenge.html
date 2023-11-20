@@ -56,8 +56,27 @@
             case 2:
                 totalEl += 20.0
                 break
-
+         
         }
+        toppings = document.getElementById("toppingslist").getElementsByClassName("toppingitem");
+        for(const topping of toppings){
+            if(topping.checked){
+                totalEl += 0.4;
+            }
+        }
+
+        
+        if (!isNaN(val = parseInt(document.getElementById("cokes").value))) {
+                totalamt += val * 1.25;
+            }
+            if (!isNaN(val = parseInt(document.getElementById("dietcokes").value))) {
+                totalamt += val * 1.25;
+            }
+            if (!isNaN(val = parseInt(document.getElementById("sprites").value))) {
+                totalamt += val * 1.25;
+            }
+
+            totalelem.value = totalamt.toFixed(2);
     }
     </script>
     </head>
