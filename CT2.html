@@ -1,0 +1,51 @@
+<!DOCTYPE html><!-- defines the document as an html doc-->
+<html lang="en"><!--opeing html tag-->
+<head><!-- opening head tag-->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+    <script>//opening script tag, contains javascript validation
+    //function for validation
+        function myFunction(){
+            //defining variables
+        var uName = document.forms["myForm"]["fuser"].value;
+        var pWord = document.forms["myForm"]["fpwd"].value;
+        //if username is smaller than 8 char displays alert
+        if(uName.length < 8){
+            alert("your user name must contain more than 8 characters");
+        }
+         else if( uName.length > 46){//if uname bigger than 46 char display alert
+            alert("your user name must contain less than 46 characters");
+        }
+      
+        if(pWord.length < 8 ){//if password smaller than 8 char display alert
+            alert("your password must contain more than 8 characters");
+        }
+        else if(pWord.length > 16){//if pword bigger than 16 display alert
+            alert("your password must contain less than 16 characters");
+        }
+       else if(pWord.search(/[A-Z]/) < 0){//searches pword to ensure it contains an upper case letter
+        alert("Your password must contain one uppercase letter");
+       }
+       else if(pWord.search(/[0-9]/) <0){//searches pword to ensure it contains a number
+        alert("your password needs a number")
+       }
+       else{//returns true if none of the above are true
+        return true;
+       }
+    }
+    //clase script tag
+    </script>
+</head><!--close head tag-->
+<body><!--open body tag-->
+<h1> USER LOGIN </h1><br><!--h1 displays header to user, br line break-->
+<!-- form with 4 input field allows the user to input data-->
+<form name="myForm" method="post" action="" id="myForm">
+    <input type="text" id="fuser" name="fuser" placeholder="Username"><br>
+    <input type="password" id="fpwd" name="fpwd" placeholder="Password"><br>
+    <input type="number" id="digit" name="digit" placeholder="enter 6 digits" min="1" max="6"><br>
+    <input type="datetime-local" id="date" name="date" min="2023-11-01T00:00"><br>
+    <button type="button" onclick="myFunction()"> Login </button> <!-- on click runs my function to validate input fields-->
+</form><!-- close tag-->
+
+</body><!-- close tag-->
+</html><!-- close tag-->
